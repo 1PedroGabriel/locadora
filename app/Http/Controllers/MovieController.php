@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Movie;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
@@ -30,10 +31,36 @@ class MovieController extends Controller
 
     public function alugar($id){
 
+        $user = auth()->user();
         $movie = Movie::findOrFail($id);
-        $movie->alugado = 1;
-        $movie->save();
-    
+
+        if($user->remember_token == -1 && $movie->alugado == 0){
+            
+            $movie->alugado = 1;
+            $movie->save();
+            $user->remember_token = $id;
+            $user->save();
+
+            return view('alugado');
+        
+        }
+
+        return redirect('/');
+    }
+
+    public function devolver(){
+
+        $user = auth()->user();
+        if($user->remember_token != NULL){
+
+            $movie = Movie::findOrFail($user->remember_token);
+            $movie->alugado = 0;
+            $movie->save();
+            $user->remember_token = NULL;
+            $user->save();
+
+        }
+
         return redirect('/');
     }
 

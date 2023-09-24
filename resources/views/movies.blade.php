@@ -24,15 +24,6 @@
                         <a href="/filmes/" class="nav-link">Filmes</a>
                     </li>
 
-                    
-                   <!-- apenas aparece isso se o usuario tiver a propriedade admin igual a 1, laravel mysql -->
-                   <!-- @if (auth()->check() && auth()->user()->admin == 1) -->
-                   <li class="navbar-item">
-                        <a href="/filmes/create" class="nav-link">Adicionar Filme</a>
-                    </li>
-                   <!-- @endif    -->
-                   
-                    </ul>
                 </div>
             </nav>
         </header>

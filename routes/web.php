@@ -21,12 +21,14 @@ Route::middleware(\App\Http\Middleware\Autenticador::class)->group(function () {
     Route::get('/filmes/{id}', [MovieController::class, 'show']);
     Route::get('/filmes/alugar/{id}', [MovieController::class, 'alugar']);
     Route::get('/filmes/', [MovieController::class, 'filmes']);
+    Route::post('/alugar', [MovieController::class, 'alugar']);
+    Route::post('/devolver', [MovieController::class, 'devolver']);
 
 });
 
 Route::middleware(\App\Http\Middleware\Admin::class)->group(function () {
 
-    Route::get('/filmes/create', [MovieController::class, 'create']);
+    Route::get('/f', [MovieController::class, 'create']);
     Route::post('/filmes', [MovieController::class, 'store']);
     Route::delete('/filmes/{id}', [MovieController::class, 'destroy']);
     Route::get('/filmes/edit/{id}', [MovieController::class, 'edit']);
@@ -53,5 +55,4 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/gotore', [UserController::class, 'gotore']);
 
-Route::post('/alugar', [MovieController::class, 'alugar']);
 

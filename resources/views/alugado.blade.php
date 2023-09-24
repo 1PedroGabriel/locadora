@@ -33,14 +33,13 @@
             </div>
         </nav>
     </header>
-    <h1>Pagina principal</h1>
-    <form action="/logout" method="POST">
+    <h1>Alugado</h1>
+    <form action="/devolver" method="POST">
         @csrf
-        <button>Logout</button>
+        <button>Devolver Filme</button>
     </form>
 
 </body>
 <footer class="footer">
     <p>locadora de filmes &copy; 2023</p>
 </footer>
-
