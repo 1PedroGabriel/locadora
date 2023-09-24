@@ -15,15 +15,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 
+Route::middleware(\App\Http\Middleware\Autenticador::class)->group(function () {
+        
+    Route::get('/', [MovieController::class, 'home']);
+    Route::get('/filmes/{id}', [MovieController::class, 'show']);
+    Route::get('/filmes/alugar/{id}', [MovieController::class, 'alugar']);
+    Route::get('/filmes/', [MovieController::class, 'filmes']);
 
-Route::get('/', [MovieController::class, 'home']);
-Route::get('/filmes/create', [MovieController::class, 'create']);
-Route::get('/filmes/{id}', [MovieController::class, 'show']);
-Route::post('/filmes', [MovieController::class, 'store']);
-Route::delete('/filmes/{id}', [MovieController::class, 'destroy']);
-Route::get('/filmes/edit/{id}', [MovieController::class, 'edit']);
-Route::get('/filmes/', [MovieController::class, 'filmes']);
-Route::put('/filmes/update/{id}', [MovieController::class, 'update']);
+});
+
+Route::middleware(\App\Http\Middleware\Admin::class)->group(function () {
+
+    Route::get('/filmes/create', [MovieController::class, 'create']);
+    Route::post('/filmes', [MovieController::class, 'store']);
+    Route::delete('/filmes/{id}', [MovieController::class, 'destroy']);
+    Route::get('/filmes/edit/{id}', [MovieController::class, 'edit']);
+    Route::put('/filmes/update/{id}', [MovieController::class, 'update']);
+
+});
+
 
 // 
 Route::get('/login', function () {
@@ -43,4 +53,5 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/gotore', [UserController::class, 'gotore']);
 
+Route::post('/alugar', [MovieController::class, 'alugar']);
 

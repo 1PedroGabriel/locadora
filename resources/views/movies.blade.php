@@ -23,6 +23,8 @@
                     <li class="navbar-item">
                         <a href="/filmes/" class="nav-link">Filmes</a>
                     </li>
+
+                    
                    <!-- apenas aparece isso se o usuario tiver a propriedade admin igual a 1, laravel mysql -->
                    <!-- @if (auth()->check() && auth()->user()->admin == 1) -->
                    <li class="navbar-item">
@@ -36,6 +38,25 @@
         </header>
     </body>
 <h1>bem vindo a seçao de filmes</h1>
+
+    @foreach($movies as $movie)
+    
+    <p>{{ $movie->nome }} -- {{ $movie->genero }}</p>
+
+    
+    <a href="/filmes/alugar/{{ $movie->id }}" class="btn btn-primary" id="event-submit">Alugar</a>
+
+    - @if (auth()->check() && auth()->user()->admin == 1)
+    <a href="/filmes/edit/{{ $movie->id }}" class="btn btn-primary" id="event-submit">Editar</a>
+    <form action="/filmes/{{ $movie->id }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger delete-btn">Deletar</button>
+    </form>
+    
+    @endif
+
+    @endforeach
 <footer class="footer">
     <p>locadora de filmes &copy; 2023</p>
 </footer>

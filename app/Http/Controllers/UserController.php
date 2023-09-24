@@ -20,6 +20,7 @@ class UserController extends Controller
         return redirect('/register');
     }
 
+
     public function login(Request $request) {
 
 
