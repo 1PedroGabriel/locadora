@@ -34,11 +34,11 @@ class MovieController extends Controller
         $user = auth()->user();
         $movie = Movie::findOrFail($id);
 
-        if($user->remember_token == NULL && $movie->alugado == 0){
+        if($user->id_filme == NULL && $movie->alugado == 0){
             
             $movie->alugado = 1;
             $movie->save();
-            $user->remember_token = $id;
+            $user->id_filme = $id;
             $user->save();
 
             return view('alugado');
@@ -51,12 +51,12 @@ class MovieController extends Controller
     public function devolver(){
 
         $user = auth()->user();
-        if($user->remember_token != NULL){
+        if($user->id_filme != NULL){
 
-            $movie = Movie::findOrFail($user->remember_token);
+            $movie = Movie::findOrFail($user->id_filme);
             $movie->alugado = 0;
             $movie->save();
-            $user->remember_token = NULL;
+            $user->id_filme = NULL;
             $user->save();
 
         }

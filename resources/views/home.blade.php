@@ -8,51 +8,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <!-- css da aplicacao -->
     <link href="/css/styles.css" rel ="stylesheet">
-    <!-- css bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav">
-                
-                <li class="navbar-item">
+
+        <nav class="navegation">
+            
                 
                     <a href="/" class="nav-link">Home</a>
-                
-                </li>
-                
-                <li class="navbar-item">
-                
+            
                     <a href="/filmes/" class="nav-link">Filmes</a>
-                
-                </li>
-                
-                <li class="navbar-item">
-
+   
                     <a href="/alugado" class="nav-link">Filme Alugado</a>
-                
-                </li>
-               
+
                 <!-- apenas aparece isso se o usuario tiver a propriedade admin igual a 1, laravel mysql -->
     <!-- @if (auth()->check() && auth()->user()->admin == 1) -->
-              
-                <li class="navbar-item">
+          
                     <a href='/f' class="nav-link"> Adicionar Filme</a>
-                </li>
-    
+
     <!-- @endif    -->
-               
-                </ul>
-            </div>
+
         </nav>
+
     </header>
-    <h1>Pagina principal</h1>
-    <form action="/logout" method="POST">
-        @csrf
-        <button>Logout</button>
-    </form>
+
+    <div class="bd">
+        
+        <h1>Pagina principal</h1>
+    
+        <form action="/logout" method="POST">
+            @csrf
+            <button class="buttonmain"><h1>Sair</h1></button>
+        </form>
+        <hr>
+        <h2>Este projeto foi feito em php utilizando o framework laravel para estudo.</h2>
+        <h2>Programadores responsáveis:  (Conta do github na pasta do projeto)</h2>
+        
+        <a href="https://github.com/felodelta/locadora/" class="conta">-> Felipe Samuel</a>
+        <a href="https://github.com/1PedroGabriel/locadora" class="conta"> -> Pedro Gabriel</a>
+
+    </div>
 
 </body>
 <footer class="footer">
