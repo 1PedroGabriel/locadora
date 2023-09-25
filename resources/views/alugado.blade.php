@@ -33,11 +33,20 @@
             </div>
         </nav>
     </header>
+    @if (auth()->user()->remember_token != NULL)
     <h1>Alugado</h1>
+
     <form action="/devolver" method="POST">
         @csrf
         <button>Devolver Filme</button>
     </form>
+
+    @else
+
+        <h1>Você ainda não alugou nenhum filme</h1>
+        <p>Veja o nosso catálogo e alugue um filme.</p>
+
+    @endif
 
 </body>
 <footer class="footer">

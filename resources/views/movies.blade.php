@@ -15,30 +15,51 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
+                
                 <div class="collapse navbar-collapse" id="navbar">
+                
                 <ul class="navbar-nav">
+                   
                     <li class="navbar-item">
+                   
                         <a href="/" class="nav-link">Home</a>
+                   
                     </li>
+                   
                     <li class="navbar-item">
+                    
                         <a href="/filmes/" class="nav-link">Filmes</a>
+                   
+                    </li>
+
+                    <li class="navbar-item">
+
+                        <a href="/alugado" class="nav-link">Filme Alugado</a>
+                    
                     </li>
 
                 </div>
             </nav>
         </header>
-    </body>
+
 <h1>bem vindo a seçao de filmes</h1>
 
     @foreach($movies as $movie)
-    
+    <div>
     <p>{{ $movie->nome }} -- {{ $movie->genero }}</p>
 
-    
+    @if(!$movie->alugado)
     <a href="/filmes/alugar/{{ $movie->id }}" class="btn btn-primary" id="event-submit">Alugar</a>
 
+    @else
+        <button class="btn btn-primary" id="event-submit">Alugado</button>
+
+    @endif
+    
+
+        
     - @if (auth()->check() && auth()->user()->admin == 1)
-    <a href="/filmes/edit/{{ $movie->id }}" class="btn btn-primary" id="event-submit">Editar</a>
+    <a href="/filmes/edit/{{ $movie->id }}" class="btn btn-primary" id="event-submit" >Editar</a>
     <form action="/filmes/{{ $movie->id }}" method="POST">
         @csrf
         @method('DELETE')
@@ -47,7 +68,11 @@
     
     @endif
 
+    </div>
+
     @endforeach
+
+    </body>
 <footer class="footer">
     <p>locadora de filmes &copy; 2023</p>
 </footer>

@@ -34,7 +34,7 @@ class MovieController extends Controller
         $user = auth()->user();
         $movie = Movie::findOrFail($id);
 
-        if($user->remember_token == -1 && $movie->alugado == 0){
+        if($user->remember_token == NULL && $movie->alugado == 0){
             
             $movie->alugado = 1;
             $movie->save();
@@ -78,7 +78,13 @@ class MovieController extends Controller
 
 
     public function destroy($id){
-        Movie::findOrFail($id)->delete();
+        
+        $movie = Movie::findOrFail($id);
+        if(!$movie->alugado) {
+            $movie->destroy();
+        }
+        
+        
         return redirect('/filmes');
     }
 

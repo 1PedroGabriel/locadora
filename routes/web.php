@@ -24,6 +24,11 @@ Route::middleware(\App\Http\Middleware\Autenticador::class)->group(function () {
     Route::post('/alugar', [MovieController::class, 'alugar']);
     Route::post('/devolver', [MovieController::class, 'devolver']);
 
+    Route::get('/alugado', function () {
+        return view('alugado');
+    });
+    
+
 });
 
 Route::middleware(\App\Http\Middleware\Admin::class)->group(function () {

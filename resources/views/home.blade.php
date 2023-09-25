@@ -16,18 +16,33 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
+                
                 <li class="navbar-item">
+                
                     <a href="/" class="nav-link">Home</a>
+                
                 </li>
+                
                 <li class="navbar-item">
+                
                     <a href="/filmes/" class="nav-link">Filmes</a>
+                
                 </li>
-               <!-- apenas aparece isso se o usuario tiver a propriedade admin igual a 1, laravel mysql -->
-               <!-- @if (auth()->check() && auth()->user()->admin == 1) -->
-               <li class="navbar-item">
+                
+                <li class="navbar-item">
+
+                    <a href="/alugado" class="nav-link">Filme Alugado</a>
+                
+                </li>
+               
+                <!-- apenas aparece isso se o usuario tiver a propriedade admin igual a 1, laravel mysql -->
+    <!-- @if (auth()->check() && auth()->user()->admin == 1) -->
+              
+                <li class="navbar-item">
                     <a href='/f' class="nav-link"> Adicionar Filme</a>
                 </li>
-               <!-- @endif    -->
+    
+    <!-- @endif    -->
                
                 </ul>
             </div>
