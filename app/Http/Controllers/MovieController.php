@@ -82,7 +82,7 @@ class MovieController extends Controller
         $movie = Movie::findOrFail($id);
         if(!$movie->alugado) {
             $movie->destroy();
-        }
+        } 
         
         
         return redirect('/filmes');

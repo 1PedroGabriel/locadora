@@ -51,6 +51,6 @@ class UserController extends Controller
         $user = User::create($incomeFields);
         auth()->login($user);
 
-        return redirect('/login');
+        return redirect('/');
     }
 }
